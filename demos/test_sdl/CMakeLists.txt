@@ -47,7 +47,10 @@ target_link_libraries(test_sdl ${DEMO_DEPS} ${SDL2_LIBRARIES})
 
 add_executable(test_sdl_opengl test_sdl_opengl.cpp)
 target_link_libraries(test_sdl_opengl ${DEMO_DEPS} ${SDL2_LIBRARIES} ${GLEW_LIBRARIES})
-        
+
+file(GLOB shaders "${CMAKE_CURRENT_SOURCE_DIR}/*.glsl")
+install(FILES ${shaders} DESTINATION ${CMAKE_BINARY_DIR})
+
 install(TARGETS test_sdl test_sdl_opengl
         RUNTIME DESTINATION ${CMAKE_BINARY_DIR}
         LIBRARY DESTINATION ${CMAKE_BINARY_DIR}
